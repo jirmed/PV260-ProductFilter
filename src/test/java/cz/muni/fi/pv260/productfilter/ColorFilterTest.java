@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ColorFilterTest {
 
     @Test
-    void testPasses() throws Exception {
+    void testPasses() {
         Filter filter = new ColorFilter(Color.RED);
 
         assertThat(filter.passes(new Product(1, "Name", Color.RED, BigDecimal.ONE))).isTrue();

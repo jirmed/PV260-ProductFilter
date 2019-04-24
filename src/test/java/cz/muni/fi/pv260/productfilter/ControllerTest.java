@@ -51,7 +51,7 @@ class ControllerTest {
     }
 
     @Test
-    void testSelect() throws Exception {
+    void testSelect() {
 
         initMocks();
         Controller controller = new Controller(inputMock, outputMock, loggerMock);
