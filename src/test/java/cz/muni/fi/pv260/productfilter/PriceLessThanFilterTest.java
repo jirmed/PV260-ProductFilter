@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PriceLessThanFilterTest {
 
@@ -15,5 +16,11 @@ class PriceLessThanFilterTest {
         assertThat(new PriceLessThanFilter(BigDecimal.valueOf(50)).passes(product)).isFalse();
         assertThat(new PriceLessThanFilter(BigDecimal.valueOf(100)).passes(product)).isTrue();
         assertThat(new PriceLessThanFilter(BigDecimal.valueOf(200)).passes(product)).isTrue();
+    }
+
+    @Test
+    void testFilterNeverSucceds() throws Exception {
+        assertThatThrownBy(() -> new PriceLessThanFilter(BigDecimal.valueOf(-1)))
+                .isInstanceOf(FilterNeverSucceeds.class);
     }
 }
